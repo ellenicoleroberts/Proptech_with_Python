@@ -1,10 +1,8 @@
-<img src= "Images/sanfran.png" width="930" height="250">
+<img src= "Images/sanfran.png" width="930" height="300">
 
-# Proptech
+# PropTech: Housing Rental Analysis for San Francisco
 
-This application offers clients an online investment solution for their retirement portfolios through the use of algorithms that choose from various investment styles and options.
-
-The goal is to determine the fund with the most investment potential based on key risk-management metrics: the daily returns, standard deviations, Sharpe ratios, and betas.
+This analysis explores housing market relationships in San Francisco from 2010 to 2016 using various data visualization tools, including aggregation, interactive visualizations, and geospatial analysis. The goal of this analysis is to find properties in the San Francisco market that are viable investment opportunities.
 
 ---
 ## Technologies
@@ -13,37 +11,45 @@ This application leverages python 3.7 with the following packages:
 
 * pandas: an open-source library that offers easy-to-use data analysis tools for Python.
 * pathlib: for creation of file paths allowing the application to interact with a computer's filesystem.
-* %matplotlib: for creating static, animated, and interactive visualizations in Python.
-* hvplot.pandas: a visualization library that can produce advanced charts and interactive visualizations. 
-
-To run this code, first clone the GitHub repo this file is in into your Terminal. Next, to install these packages, while in this same repo in your Terminal, enter `pip install -r requirements.txt`.
+* hvplot.pandas: a visualization library included in the PyViz package that can produce advanced charts    
+  and interactive visualizations. 
 
 ---
 ## Installation Guide
 
-GeoViews and hvPlot, so we'll begin by importing those libraries, as well as some others that you will need to prepare your data for plotting.
+To run PyViz and its dependencies, it is best to first create a new environment in your terminal and install the PyViz pacakges within this environment by completing the following steps:
 
-In addition to the normal dependencies above, to run the Risk Return Analysis code you need to first activate the correct environment by inputting the following command in your terminal:
+STEP 1: In your terminal, enter:
 
-`conda activate dev`
+`conda create -n PyViz python=3.7 anaconda`
 
-Next, while in your IDE, open the "risk_return_analysis.ipynb" notebook file and run the code.
+STEP 2: Activate the environment you created in Step 1 (PyViz) by inputting the following command in your terminal:
+
+`conda activate PyViz`
+
+STEP 3: Within this environment, install the PyViz packages by using the conda install command as follows:
+
+`conda install -c pyviz hvplot geoviews`
+
+STEP 4: Clone the GitHub repo (the one this file is contained in) into your Terminal. 
+
+STEP 5: To install the remaining packages, while in this same repo in your Terminal, enter `pip install -r requirements.txt`.
+
+Finally, to run the code, in your IDE open the "san_francisco_housing.ipynb" notebook file and run it.
 
 ---
 
 ## Usage
 
-To begin with, the code imports and reads data from the whale_navs.csv file included in this repo. This file contains NAV prices of four major funds plus S&P 500 Index data. Once the data is imported, it is converted into a Pandas DataFrame including only daily return values for each of the funds and the S&P 500 Index. 
+To begin with, this code imports and reads data from the sfo_neighborhoods_census_data.csv file included in this repo. This file contains various housing market data for a number of neighborhoods in San Francisco. Once the data is imported, it is converted into a Pandas DataFrame and then grouped by "year". Next, the data is plotted with a bar chart reflecting the number of housing units per year.
 
-These daily returns are plotted on an overlay line plot for visual comparison. Next, each of the funds' and the S&P 500 Index's cumulative returns are calculated for the time period and then plotted on the same plot, again overlayed for visual comparison, as shown here:
+Using numerical and visual aggregation, both the average sale price per square foot and the average gross rent price are calculated and visualized over time (2010 to 2016) with a line plot. 
 
-![Cumulative returns plot.](images/cumreturns.png)
+In the following section, interactive visualizations and widgets are used to explore the average sale price per square foot by neighborhood over time as well as the average gross rent price per neighborhood over time. 
 
-Volatility of each of the four fund portfolios and of the S&P 500 Index is then visually analyzed with box plots. Standard deviations are next determined, as well as the annualized standard deviation and rolling standard deviations for a 21-day window. These rolling standard deviations are plotted on an overlay line plot.
+The final section explores the geospatial relationships in the data by using interactive visualizations with hvPlot and GeoViews. To do so, another CSV file is imported (neighborhoods_coordinates.csv) that includes latitude and longitude coordinates for each neighborhood. This data is merged with our previously imported data allowing us to create a geospatial plot depicting San Francisco sale prices per square foot and average gross rent across the different neighborhoods, as shown here:
 
-Risk-return metrics are next analyzed. Sharpe ratios are calculated and visualized via a bar plot for comparison.
-
-To evaluate how the portfolios react relative to the broader market, covariance using a 60-day rolling window is determined for each of the best two performing funds (selected on a risk-return basis) compared to the S&P 500 Index. Beta values, likewise using a 60-day rolling window, are then determined and plotted.
+![Cumulative returns plot.](images/geomap.png)
 
 ---
 
