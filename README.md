@@ -1,4 +1,4 @@
-<img src= "Images/sanfran.png" width="930" height="300">
+<img src= "images/sanfran.png" width="930" height="300">
 
 # PropTech: Housing Rental Analysis for San Francisco
 
