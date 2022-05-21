@@ -1,4 +1,4 @@
-<img src= "images/sanfran.png" width="930" height="300">
+<img src= "Images/sanfran.png" width="930" height="300">
 
 # PropTech: Housing Rental Analysis for San Francisco
 
@@ -49,7 +49,7 @@ In the following section, interactive visualizations and widgets are used to exp
 
 The final section explores the geospatial relationships in the data by using interactive visualizations with hvPlot and GeoViews. To do so, another CSV file is imported (neighborhoods_coordinates.csv) that includes latitude and longitude coordinates for each neighborhood. This data is merged with our previously imported data allowing us to create a geospatial plot depicting San Francisco sale prices per square foot and average gross rent across the different neighborhoods, as shown here:
 
-![Cumulative returns plot.](images/geomap.png)
+![Cumulative returns plot.](Images/geomap.png)
 
 ---
 
